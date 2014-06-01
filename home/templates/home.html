@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <div class="icon home"></div>
+    <a id="notthis" title="Currentpage">Home</a>
+{% endblock%}
+
+{% block extra%}
+        <script>
+            $('.header').css('background-color', 'transparent');
+            /*
+            var jsonfile = 'static/assets/js/';
+            var myArr = [];
+            $.getJSON(jsonfile + 'cons.json' , function(data){
+                for(var j in data){
+                    console.log(j + ': '+ data[j][0] + ' - ' + data[j][1] + ' - ' + data[j][2] );
+                    var addressField = data[j][3];
+                    var geocoder = new google.maps.Geocoder();
+                    geocoder.geocode(
+                            {'address': addressField},
+                            function(results, status) {
+                                if (status == google.maps.GeocoderStatus.OK) {
+                                    var loc = results[0].geometry.location;
+                                    console.log(loc.lat() + ', ' + loc.lng());
+                                    // use loc.lat(), loc.lng()
+                                }
+                                else {
+                                    console.log("Not found: " + status);
+                                }
+                            }
+                    );
+                }
+            });*/
+
+            $(function() {
+                $('#mylist2').listplus({'sortBy':['.dateday']}, {'sortBy':['.datemonth']}, {'sortBy':['.dateyear']});
+            });
+        </script>
+{% endblock %}
+
+{% block content %}
+        <div id="homee">
+            <div style="text-align: center;padding-top:150px;color:#fff">
+                <a style="font:50px Segoe UI Light;">GET</a><a style="font:50px Segoe UI;font-weight: bold">READY</a><br/><br/>
+                <div style="background-color: rgba(255,255,255,0.6);padding:7px;width:300px;margin:0 auto;">
+                    <a style="font:50px Segoe UI Light;">TO</a> <a style="font:50px Segoe UI Light;">EXPLORE</a>
+                </div>
+                <br/>
+                <a style="font:50px Segoe UI Light;">BEST</a><a style="font:50px Segoe UI;font-weight: bold">CONVENTIONS</a>
+            </div>
+        </div>
+        <div class="home_conts">
+            <ul id="mylist2">
+
+            </ul>
+        </div>
+{% endblock %}

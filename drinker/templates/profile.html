@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <div class="icon login"></div>
+    <a id="notthis" title="Currentpage">{{ user }}</a>
+{% endblock%}
+
+{% block extra%}
+{% endblock %}
+
+{% block content %}
+<div class="prof_page" >
+
+</div>
+<div class="prof_place">
+
+    <a style="font:30px Arial;color:#555;font-weight: bold">{{ user }}</a> <a style="font:20px Arial;color:#555">{{ thisuser.name }}</a>
+
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <div class="icon map"></div>
+    <a id="notthis" title="Currentpage">Map</a>
+{% endblock%}
+
+{% block extra%}
+<div id="topmenu" class="opnthis" style="float:right;">
+    <div class="icon marker"></div>
+    <a id="notthis" style="padding-left:40px;">Con List</a>
+</div>
+{% endblock %}
+
+{% block content %}
+<script >
+$(function() {
+	$('#mylist').listplus({'sortBy':['.dateday']}, {'sortBy':['.datemonth']}, {'sortBy':['.dateyear']});
+
+	$('#side_bar a').on('click',function(event) {
+		$('.ui-active').removeClass('ui-active');
+		$(this).addClass('ui-active');
+	});
+
+    $('#allin').on('click',function(event) {
+		$('#mylist').listplus('destroy');
+		$('#mylist').listplus({'sortBy':['.num']});
+	});
+    $('#animefilter').on('click',function(event) {
+		$('#mylist').listplus('destroy');
+		$('#mylist').listplus({'filterBy':['.Anime']});
+	});
+    $('#comixfilter').on('click',function(event) {
+		$('#mylist').listplus('destroy');
+		$('#mylist').listplus({'filterBy':['.Comix']});
+	});
+    $('#gamingfilter').on('click',function(event) {
+		$('#mylist').listplus('destroy');
+		$('#mylist').listplus({'filterBy':['.Gaming']});
+	});
+
+    $('#alphabetsort').on('click',function(event) {
+		$('#mylist').listplus('destroy');
+		$('#mylist').listplus({'sortBy':['.title']});
+	});
+
+	$('#upcomingsort').on('click',function(event) {
+		$('#mylist').listplus('destroy');
+		$('#mylist').listplus({'sortBy':['.dateday']}, {'sortBy':['.datemonth']}, {'sortBy':['.dateyear']});
+	});
+    var stat_f_url = $('#static_files_url').val();
+    var thislogo = "url('" + stat_f_url + "img2/concavelogo2.png')";
+    $('.header').css('background-image', thislogo );
+});
+</script>
+<div id="mainmap" ></div>
+<div id="side_bar"  >
+    <div style="margin-bottom:10px">
+        <a id="upcomingsort">Upcoming</a>
+        <a id="allin">All</a>
+        <a id="animefilter">Anime</a>
+        <a id="comixfilter">Comix</a>
+        <a id="gamingfilter">Gaming</a>
+        <a id="alphabetsort">Alphabeticaly</a>
+    </div>
+    <ul id="mylist">
+
+    </ul>
+</div>
+
+{% endblock %}

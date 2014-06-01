@@ -1,0 +1,74 @@
+{% load static %}
+<!Doctype html>
+<html>
+    <head>
+        <title>
+            The site
+        </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/main.css' %}"/>
+        <script src="{% static 'assets/js/jquery.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-1.9.1.js' %}"></script>
+        <script src="{% static 'assets/js/jquery-ui-1.10.3.custom.js' %}"></script>
+
+        <script src="{% static 'assets/js/jquery.listplus.js' %}"></script>
+        <script src="{% static 'assets/js/some.js' %}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+        <script src="{% static 'assets/js/mapp.js' %}"></script>
+
+    </head>
+    <body>
+        {% block header %}
+        <div class="header" >
+            <div id="topmenu">
+                {% block title %}
+
+                {% endblock%}
+                <ul id="menulist" class="option_act">
+                    <li>
+                        <div class="icon home"></div>
+                        <a href="/" title="Home">Home</a>
+                    </li>
+                    <li>
+                        <div class="icon map"></div>
+                        <a href="/map" title="Map">Map</a>
+                    </li>
+                    <li>
+                        <div class="icon about"></div>
+                        <a href="/about" title="About">About</a>
+                    </li>
+                    <li>
+                        <div class="icon help"></div>
+                        <a href="/help" title="Help">Help</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <div class="icon login"></div>
+                        <a href="/accounts/profile" title="Profile">{{ user }}</a>
+                    </li>
+                    <li>
+                        <div class="icon logout"></div>
+                        <a href="/accounts/logout" title="Login">Logout</a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <div class="icon login"></div>
+                        <a href="/accounts/login" title="Login">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% block extra%}
+
+            {% endblock %}
+        </div>
+        {% endblock %}
+        <div class="content">
+            {% block content %}
+
+
+
+            {% endblock %}
+        </div>
+        <input  id="static_files_url" type="hidden" value="{% static 'assets/'%}"/>
+    </body>
+</html>
